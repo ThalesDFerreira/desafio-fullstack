@@ -30,6 +30,6 @@
     "telegraf": "^4.14.0"
   },
   "devDependencies": {
-    "sequelize-cli": "^6.6.0"
+    "sequelize-cli": "^6.6.1"
   }
 }
