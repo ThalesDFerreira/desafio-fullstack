@@ -15,8 +15,8 @@ module.exports = {
     },
     timezone: '-03:00',
     dialectOptions: {
-      useUTC: false
-    }
+      useUTC: false,
+    },
   },
   test: {
     username: process.env.MYSQLUSER,
@@ -32,8 +32,8 @@ module.exports = {
     },
     timezone: '-03:00',
     dialectOptions: {
-      useUTC: false
-    }
+      useUTC: false,
+    },
   },
   production: {
     username: process.env.MYSQLUSER,
@@ -49,7 +49,7 @@ module.exports = {
     },
     timezone: '-03:00',
     dialectOptions: {
-      useUTC: false
-    }
+      useUTC: false,
+    },
   },
 };
