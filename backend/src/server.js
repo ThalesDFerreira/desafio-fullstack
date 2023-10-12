@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const status = require('http-status');
 const port = process.env.PORT;
 
 const app = express();
@@ -9,12 +10,12 @@ app.use(cors());
 
 app.get('/', (req, res) => {
   try {
-    return res.status(200).json({
-      mensagem: 'Server ready, waiting action !!!',
+    return res.status(status.OK).json({
+      message: 'Server ready, waiting action !!!',
     });
   } catch (error) {
-    return res.status(400).json({
-      mensagem: error,
+    return res.status(status.BAD_REQUEST).json({
+      message: error,
     });
   }
 });
