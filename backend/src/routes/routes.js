@@ -1,12 +1,16 @@
 const router = require('express').Router();
 const status = require('http-status');
-// const { bodyMessagesValidation } = require('../middlewares/validations');
+const { bodyMessagesValidation } = require('../middlewares/validations');
 // const express = require('express');
 
 const {
   getMessagesController,
-  // insertMessagesController,
+  insertMessagesController,
 } = require('../controllers/messagesController');
+
+const {
+  instanceTelegraf,
+} = require('../services/messagesServices');
 
 router.get('/', (req, res) => {
   try {
@@ -22,6 +26,9 @@ router.get('/', (req, res) => {
 
 // MENSAGENS
 router.get('/messages', getMessagesController);
-// router.post('/messages', bodyMessagesValidation, insertMessagesController);
+router.post('/messages', bodyMessagesValidation, insertMessagesController);
+
+// INSTANCIAR TELEGRAF
+instanceTelegraf();
 
 module.exports = router;

@@ -1,5 +1,8 @@
 const status = require('http-status');
-const { getMessagesServices } = require('../services/messagesServices');
+const {
+  getMessagesServices,
+  insertMessagesServices,
+} = require('../services/messagesServices');
 
 const getMessagesController = async (req, res) => {
   try {
@@ -11,22 +14,18 @@ const getMessagesController = async (req, res) => {
   }
 };
 
-// const insertMessagesController = async (req, res) => {
-//   try {
-//     const result = await Mensagens.create({
-//       nome: req.body.nome,
-//       mensagem: req.body.mensagem,
-//     });
-//     return res.status(CREATED).json({
-//       mensagem: 'Mensagem cadastrada com sucesso!',
-//     });
-//   } catch (e) {
-//     console.log(e);
-//     return res.status(BAD_REQUEST).json({ erro: e });
-//   }
-// };
+const insertMessagesController = async (req, res) => {
+  const { message } = req.body;
+  try {
+    const result = await insertMessagesServices(message);
+    return res.status(status.CREATED).json(result);
+  } catch (error) {
+    console.log(error);
+    return res.status(status.BAD_REQUEST).json({ erro: error.message });
+  }
+};
 
 module.exports = {
   getMessagesController,
-  // insertMessagesController,
+  insertMessagesController,
 };
