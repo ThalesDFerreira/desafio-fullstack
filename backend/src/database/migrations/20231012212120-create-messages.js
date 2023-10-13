@@ -9,9 +9,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.BIGINT,
       },
-      name: {
+      client: {
         type: Sequelize.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       message: {
         type: Sequelize.STRING,

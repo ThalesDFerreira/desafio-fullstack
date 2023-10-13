@@ -6,9 +6,9 @@ const Messages = conn.define(
   'Messages',
   {
     // Model attributes are defined here
-    name: {
+    client: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     message: {
       type: DataTypes.STRING,
