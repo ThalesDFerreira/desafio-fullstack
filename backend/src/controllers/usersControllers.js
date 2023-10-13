@@ -3,7 +3,7 @@ const {
   getUsersServices,
   createUserServices,
   editUserServices,
-  deleteUserController,
+  deleteUserServices,
 } = require('../services/usersServices');
 
 const getUsersController = async (req, res) => {
@@ -41,7 +41,7 @@ const editUserController = async (req, res) => {
 
 const deleteUserController = async (req, res) => {
   try {
-    deleteUserController(req);
+    deleteUserServices(req);
     return res.status(status.OK).json({
       message: 'Usuário deletado com sucesso!',
     });

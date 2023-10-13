@@ -90,6 +90,5 @@ module.exports = {
   bodyMessagesValidation,
   bodyUsersValidation,
   bodyEditUsersValidation,
-  bodyDeletrUsersValidation,
   bodyLoginValidation,
 };

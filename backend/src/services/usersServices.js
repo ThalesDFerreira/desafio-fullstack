@@ -24,7 +24,7 @@ const editUserServices = async (req) => {
   return result;
 };
 
-const deleteUserController = async (req) => {
+const deleteUserServices = async (req) => {
   const result = await Users.destroy({ where: { id: req.query.id } });
   return result;
 };
@@ -33,5 +33,5 @@ module.exports = {
   getUsersServices,
   createUserServices,
   editUserServices,
-  deleteUserController,
+  deleteUserServices,
 };
