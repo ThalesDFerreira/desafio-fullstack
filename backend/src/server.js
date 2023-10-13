@@ -8,6 +8,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use(Routes)
+app.use(Routes);
 
 app.listen(port, () => console.log(`Api rodando na porta ${port}`));

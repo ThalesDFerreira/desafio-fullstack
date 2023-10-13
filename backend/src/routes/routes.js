@@ -8,9 +8,7 @@ const {
   insertMessagesController,
 } = require('../controllers/messagesController');
 
-const {
-  instanceTelegraf,
-} = require('../services/messagesServices');
+const { instanceTelegraf } = require('../services/messagesServices');
 
 router.get('/', (req, res) => {
   try {

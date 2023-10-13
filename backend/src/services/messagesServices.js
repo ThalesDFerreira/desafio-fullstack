@@ -60,8 +60,11 @@ const instanceTelegraf = async () => {
       ctx.reply(`Aqui você encontra nosso catálogo:\n
       https://br.pinterest.com/pin/436708495109942055/`);
       saveLogMesseges(idClient, messageReceived);
-      saveLogMesseges(`bot-${idClient}`, `Aqui você encontra nosso catálogo:\n
-      https://br.pinterest.com/pin/436708495109942055/`);
+      saveLogMesseges(
+        `bot-${idClient}`,
+        `Aqui você encontra nosso catálogo:\n
+      https://br.pinterest.com/pin/436708495109942055/`
+      );
     } else if (messageReceived === '2') {
       ctx.reply('Aguarde alguns minutos, logo o suporte te responderá!');
       saveLogMesseges(idClient, messageReceived);
