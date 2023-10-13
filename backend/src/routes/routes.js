@@ -1,12 +1,25 @@
 const router = require('express').Router();
 const status = require('http-status');
-const { bodyMessagesValidation } = require('../middlewares/validations');
-// const express = require('express');
+const {
+  bodyMessagesValidation,
+  bodyUsersValidation,
+  bodyEditUsersValidation,
+  bodyLoginValidation,
+} = require('../middlewares/validations');
 
 const {
   getMessagesController,
   insertMessagesController,
-} = require('../controllers/messagesController');
+} = require('../controllers/messagesControllers');
+
+const {
+  getUsersController,
+  createUserController,
+  editUserController,
+  deleteUserController,
+} = require('../controllers/usersControllers');
+
+const { loginController } = require('../controllers/loginController');
 
 const { instanceTelegraf } = require('../services/messagesServices');
 
@@ -21,6 +34,15 @@ router.get('/', (req, res) => {
     });
   }
 });
+
+// LOGIN
+router.post('/login', bodyLoginValidation, loginController);
+
+// USUARIOS
+router.get('/users', getUsersController);
+router.post('/users', bodyUsersValidation, createUserController);
+router.put('/users', bodyEditUsersValidation, editUserController);
+router.delete('/users', deleteUserController);
 
 // MENSAGENS
 router.get('/messages', getMessagesController);
