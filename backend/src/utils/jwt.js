@@ -22,7 +22,7 @@ const jwtGenerate = async (email, password) => {
       message: 'Usuário ou Senha incorretos!',
     };
   }
-
+  
   const {
     dataValues: { password: passBD, ...otherInfo },
   } = userSearch;
