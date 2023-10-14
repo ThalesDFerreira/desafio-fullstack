@@ -37,7 +37,7 @@ const bodyUsersValidation = async (req, res, next) => {
   }
   if (USER) {
     return res
-      .status(status.UNPROCESSABLE_CONTENT)
+      .status(status.CONFLICT)
       .json({ message: 'Usuário já cadastrado!' });
   } else {
     next();

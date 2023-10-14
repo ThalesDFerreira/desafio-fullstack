@@ -1,3 +1,4 @@
+require('dotenv').config();
 const status = require('http-status');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -25,7 +26,10 @@ const jwtGenerate = async (email, password) => {
   const {
     dataValues: { password: passBD, ...otherInfo },
   } = userSearch;
-  return jwt.sign({ data: otherInfo }, secret, jwtConfig);
+  return {
+    status: status.OK,
+    message: jwt.sign({ data: otherInfo }, secret, jwtConfig),
+  };
 };
 
 const encryptPass = async (req) => {

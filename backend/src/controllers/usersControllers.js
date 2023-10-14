@@ -20,7 +20,7 @@ const createUserController = async (req, res) => {
   try {
     createUserServices(req);
     return res.status(status.CREATED).json({
-      message: `Usuario ${result.usuario} cadastrado com sucesso!`,
+      message: `Usuario ${req.body.email} cadastrado com sucesso!`,
     });
   } catch (error) {
     return res.status(status.BAD_REQUEST).json({ erro: error.message });

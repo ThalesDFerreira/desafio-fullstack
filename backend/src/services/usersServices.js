@@ -21,6 +21,7 @@ const editUserServices = async (req) => {
     { email: req.body.email, password: encryptedPass },
     { where: { id: req.body.id } }
   );
+  console.log(result);
   return result;
 };
 
