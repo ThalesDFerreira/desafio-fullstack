@@ -14,6 +14,7 @@ const jwtGenerate = async (email, password) => {
   const [userSearch] = await Users.findAll({
     where: { email: email },
   });
+
   const isMatch = bcrypt.compareSync(password, userSearch.dataValues.password);
 
   if (!isMatch) {
@@ -22,7 +23,7 @@ const jwtGenerate = async (email, password) => {
       message: 'Usuário ou Senha incorretos!',
     };
   }
-  
+
   const {
     dataValues: { password: passBD, ...otherInfo },
   } = userSearch;

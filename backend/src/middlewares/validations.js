@@ -79,7 +79,7 @@ const bodyLoginValidation = async (req, res, next) => {
   }
   if (!USER) {
     return res
-      .status(status.UNPROCESSABLE_CONTENT)
+      .status(status.UNPROCESSABLE_ENTITY)
       .json({ message: 'Usuário não encontrado!' });
   } else {
     next();
