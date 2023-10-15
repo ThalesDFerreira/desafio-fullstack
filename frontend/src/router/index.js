@@ -1,5 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import LoginView from '../views/Login.vue';
+import HomeView from '../views/Home.vue';
+
+let pathHome = '';
+let nameHome = '';
+let componentHome = '';
+
+const verifyUserAutenticate = () => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    pathHome = '/home';
+    nameHome = 'Home';
+    componentHome = HomeView;
+  }
+};
+
+verifyUserAutenticate();
 
 const routes = [
   {
@@ -8,10 +24,9 @@ const routes = [
     component: LoginView,
   },
   {
-    path: '/home',
-    name: 'Home',
-    component: () =>
-      import(/* webpackChunkName: "pedidos" */ '../views/Home.vue'),
+    path: pathHome,
+    name: nameHome,
+    component: componentHome,
   },
 ];
 
