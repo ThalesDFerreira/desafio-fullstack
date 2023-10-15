@@ -5,6 +5,7 @@ const {
   bodyUsersValidation,
   bodyEditUsersValidation,
   bodyLoginValidation,
+  authValidation,
 } = require('../middlewares/validations');
 
 const {
@@ -34,6 +35,8 @@ router.get('/', (req, res) => {
     });
   }
 });
+
+router.use(authValidation);
 
 // LOGIN
 router.post('/login', bodyLoginValidation, loginController);

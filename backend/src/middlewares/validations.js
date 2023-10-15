@@ -86,9 +86,25 @@ const bodyLoginValidation = async (req, res, next) => {
   }
 };
 
+const authValidation = (req, res, next) => {
+  console.log(req.headers);
+  const apiKeyExists = !req.headers.apikey;
+  const apiKeyAuth = req.headers.apikey !== process.env.API_KEY;
+
+  if (apiKeyExists && apiKeyAuth) {
+    return res
+      .status(status.UNAUTHORIZED)
+      .json({ message: 'Usuário não autorizado!' });
+  }
+  console.log(apiKeyExists);
+  console.log(apiKeyAuth);
+  next();
+};
+
 module.exports = {
   bodyMessagesValidation,
   bodyUsersValidation,
   bodyEditUsersValidation,
   bodyLoginValidation,
+  authValidation,
 };

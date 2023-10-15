@@ -7,6 +7,7 @@ const {
 } = require('../services/usersServices');
 
 const getUsersController = async (req, res) => {
+  console.log('aqui');
   try {
     const users = await getUsersServices();
     return res.status(status.OK).json(users);
