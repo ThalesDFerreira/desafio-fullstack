@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,14 +10,14 @@ export default defineConfig({
   optimizeDeps: {
     esbuildOptions: {
       loader: {
-        ".js": "jsx",
+        '.js': 'jsx',
       },
     },
   },
   esbuild: {
-    loader: "jsx",
+    loader: 'jsx',
     include: /\/src\/.*\.js$/,
     exclude: [],
   },
   base: './',
-})
+});

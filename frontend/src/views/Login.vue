@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { requestPost } from '../services/requests';
+
 export default {
   data() {
     return {
@@ -29,10 +31,17 @@ export default {
       this.showPassword = !this.showPassword;
       this.passwordFieldType = this.showPassword ? 'text' : 'password';
     },
-    login() {
-      // Lógica para processar o login aqui
-      console.log('Email:', this.email);
-      console.log('Senha:', this.password);
+    async login() {
+      try {
+        const email = this.email;
+        const password = this.password;
+        const token = await requestPost('/login', { email, password });
+        localStorage.setItem("token", token.message);
+        alert('Usuário logado com sucesso!')
+        this.$router.push('/home');
+      } catch (error) {
+        alert(error.response.data.message)
+      }
     },
   },
 };

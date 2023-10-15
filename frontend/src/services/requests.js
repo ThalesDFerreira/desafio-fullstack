@@ -26,9 +26,4 @@ const requestDelete = async (endpoint) => {
   return data;
 };
 
-export {
-  requestGet,
-  requestPost,
-  requestPut,
-  requestDelete,
-};
+export { requestGet, requestPost, requestPut, requestDelete };
