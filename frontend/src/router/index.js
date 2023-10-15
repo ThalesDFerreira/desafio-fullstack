@@ -4,7 +4,7 @@ import HomeView from '../views/Home.vue';
 
 let pathHome = '';
 let nameHome = '';
-let componentHome;
+let componentHome = '';
 
 const verifyUserAutenticate = () => {
   const token = localStorage.getItem('token');
