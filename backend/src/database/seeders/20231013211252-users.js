@@ -7,9 +7,9 @@ module.exports = {
       'Users',
       [
         {
-          email: 'usuario1@gmail.com',
+          email: 'teste@email.com',
           password:
-            '$2b$10$DSnzAUm5f9sfS9SYUDToD.e6A.ZQCNDOXXgEmP8bRSVsZ6rpjjA4S',
+            '$2b$10$.OEfAyeNEX6TxycCOdADLuJyjMZGW0V8.IC5BAd4CukZug3nEwo6C',
         },
       ],
       {}
