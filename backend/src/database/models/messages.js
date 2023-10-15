@@ -10,6 +10,10 @@ const Messages = conn.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    operator: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     message: {
       type: DataTypes.STRING,
       allowNull: false,

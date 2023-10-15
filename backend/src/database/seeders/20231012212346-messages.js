@@ -5,7 +5,7 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
       'Messages',
-      [{ client: 'John Doe', message: 'Mensagem 1' }],
+      [{ client: 'John Doe', operator: 'bot-123', message: 'Mensagem 1' }],
       {}
     );
   },
