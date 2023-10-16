@@ -79,7 +79,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"message\": \"Olá Tudo Bem, o que precisa ?\"\r\n}",
+					"raw": "{\r\n    \"idClient\": 1344488624,\r\n    \"message\": \"Estamos verificando o seu caso\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
