@@ -2,7 +2,7 @@
   <header class="header-container">
     <div class="box-buttons-container">
       <button @click="logout" class="btn-logout">
-        <img src="../assets/logout.svg" alt="Sair"/>
+        <img src="../assets/logout.svg" alt="Sair" />
       </button>
     </div>
   </header>
@@ -11,7 +11,7 @@
 <script>
 export default {
   methods: {
-    logout () {
+    logout() {
       localStorage.clear();
       this.$router.push('/');
     }
@@ -38,7 +38,7 @@ export default {
 }
 
 .btn-logout:hover {
- background-color: red;
- border-radius: 20px;
+  background-color: red;
+  border-radius: 20px;
 }
 </style>
