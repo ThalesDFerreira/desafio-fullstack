@@ -1,5 +1,4 @@
 require('dotenv').config();
-
 const { Sequelize } = require('sequelize');
 
 const MYSQL_HOST = process.env.MYSQLHOST;
