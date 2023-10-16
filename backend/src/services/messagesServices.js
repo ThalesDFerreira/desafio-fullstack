@@ -8,7 +8,6 @@ const bot = new Telegraf(token);
 
 let idClient;
 
-
 const getMessagesServices = async () => {
   const messages = await Messages.findAll();
 
@@ -24,7 +23,7 @@ const insertMessagesServices = async (idClient, message) => {
   });
 };
 
-const saveLogMesseges = async (idClient,  idOperator, messageReceived) => {
+const saveLogMesseges = async (idClient, idOperator, messageReceived) => {
   await Messages.create({
     client: idClient,
     operator: idOperator,
@@ -41,7 +40,11 @@ const instanceTelegraf = async () => {
     console.log(typeof idClient);
 
     await ctx.reply(`Muito bem-vindo, ${from.first_name}!`);
-    saveLogMesseges(idClient, `bot-${idClient}`, `Muito bem-vindo, ${from.first_name}!`);
+    saveLogMesseges(
+      idClient,
+      `bot-${idClient}`,
+      `Muito bem-vindo, ${from.first_name}!`
+    );
 
     await ctx.reply(`Selecione dentre as opções:\n
     1 - Vizualizar ofertas\n2 - Atendimento no suporte.`);
