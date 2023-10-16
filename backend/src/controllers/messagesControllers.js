@@ -15,9 +15,9 @@ const getMessagesController = async (req, res) => {
 };
 
 const insertMessagesController = async (req, res) => {
-  const { message } = req.body;
+  const { idClient, message } = req.body;
   try {
-    const result = await insertMessagesServices(message);
+    const result = await insertMessagesServices(idClient, message);
     return res.status(status.CREATED).json(result);
   } catch (error) {
     console.log(error);

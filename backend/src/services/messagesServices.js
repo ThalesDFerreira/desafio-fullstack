@@ -8,13 +8,14 @@ const bot = new Telegraf(token);
 
 let idClient;
 
+
 const getMessagesServices = async () => {
   const messages = await Messages.findAll();
 
   return messages;
 };
 
-const insertMessagesServices = async (message) => {
+const insertMessagesServices = async (idClient, message) => {
   await bot.telegram.sendMessage(idClient, `${message}`);
   await Messages.create({
     client: idClient,
@@ -35,6 +36,9 @@ const instanceTelegraf = async () => {
   bot.start(async (ctx) => {
     const from = ctx.update.message.from;
     idClient = from.id;
+
+    console.log(idClient);
+    console.log(typeof idClient);
 
     await ctx.reply(`Muito bem-vindo, ${from.first_name}!`);
     saveLogMesseges(idClient, `bot-${idClient}`, `Muito bem-vindo, ${from.first_name}!`);
