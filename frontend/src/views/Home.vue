@@ -6,7 +6,7 @@
         <div class="nameClient">
           <h2>{{ client.client }}</h2>
         </div>
-        <div class="msg-list-container" ref="messageListContainer">
+        <div class="msg-list-container">
           <ul>
             <li class="msg-list" v-for="(message, messageIndex) in client.messages" :key="messageIndex">
               <p :class="message.operator.split('-')[0]">{{ message.message }} <br /> <span class="hours-span"> {{
@@ -19,7 +19,7 @@
             <input placeholder="Escreva sua mensagem..." class="input" v-model="message" />
           </div>
           <div class="btn-container">
-            <button @click="sendMessage">Enviar</button>
+            <button @click="sendMessage" :name="client.client"><img class="img-btn" src="../assets/btnSend.png" alt=""></button>
           </div>
         </div>
       </div>
@@ -36,6 +36,7 @@ export default {
     return {
       messages: [],
       message: '',
+      idClient: 0,
     };
   },
   async created() {
@@ -43,10 +44,6 @@ export default {
 
     const pollingInterval = 5000;
     setInterval(this.fetchMessages, pollingInterval);
-  },
-  updated() {
-    // Chama a função scrollToBottom sempre que o componente é atualizado
-    this.scrollToBottom();
   },
   methods: {
     async fetchMessages() {
@@ -85,20 +82,16 @@ export default {
 
       this.messages = outputArray
     },
-    async sendMessage() {
+    async sendMessage(event) {
       try {
-        const msg = { message: this.message };
-        await requestPost('/messages', msg)
+        const btnClicked = await event.target;
+        const nameAttributeBtn = await btnClicked.getAttribute("name");
+        const body = { idClient: Number(nameAttributeBtn), message: this.message };
+        await requestPost('/messages', body)
         this.message = '';
-        this.scrollToBottom();
       } catch (error) {
         console.error('Erro ao buscar mensagens', error);
       }
-    },
-    scrollToBottom() {
-      // Rola a barra de rolagem para o final
-      const container = this.$refs.messageListContainer;
-      container.scrollTop = container.scrollHeight;
     },
   },
   components: {
@@ -110,6 +103,7 @@ export default {
 <style scoped>
 .container-box-chats {
   display: flex;
+  justify-content: center;
   width: 100%;
 }
 
@@ -181,14 +175,29 @@ export default {
   padding: 5px;
 }
 
-.btn-container button {
-  color: white;
-  background-color: rgb(54, 158, 255);
-  padding: 5px;
+.btn-container {
+  margin-right: 5px;
+  background: transparent; /* Remove o fundo do botão */
 }
 
-.btn-container button:hover {
-  background-color: rgb(11, 11, 196);
+.btn-container button {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-right: 5px;
+}
+
+.img-btn {
+  margin-top: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  width: 25px;
+  background-color: white;
+  border-radius: 55px;
 }
 
 /* Estilize a barra de rolagem */
