@@ -1,5 +1,4 @@
 require('dotenv').config();
-const { Op } = require('sequelize');
 const { Telegraf } = require('telegraf');
 const { message } = require('telegraf/filters');
 const Messages = require('../database/models/messages');
@@ -56,7 +55,7 @@ const instanceTelegraf = async () => {
     if (messageReceived === '1') {
       ctx.reply(`Aqui você encontra nosso catálogo:\n
       https://br.pinterest.com/pin/436708495109942055/`);
-      saveLogMesseges(idClient, idClient, messageReceived);
+      saveLogMesseges(idClient, `client-${idClient}`, messageReceived);
       saveLogMesseges(
         idClient,
         `bot-${idClient}`,
@@ -65,14 +64,14 @@ const instanceTelegraf = async () => {
       );
     } else if (messageReceived === '2') {
       ctx.reply('Aguarde alguns minutos, logo o suporte te responderá!');
-      saveLogMesseges(idClient, idClient, messageReceived);
+      saveLogMesseges(idClient, `client-${idClient}`, messageReceived);
       saveLogMesseges(
         idClient,
         `bot-${idClient}`,
         'Aguarde alguns minutos, logo o suporte te responderá!'
       );
     } else {
-      saveLogMesseges(idClient, idClient, messageReceived);
+      saveLogMesseges(idClient, `client-${idClient}`, messageReceived);
     }
   });
 
