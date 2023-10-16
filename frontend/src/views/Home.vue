@@ -19,7 +19,7 @@
             <input placeholder="Escreva sua mensagem..." class="input" v-model="message" />
           </div>
           <div class="btn-container">
-            <button @click="sendMessage" :name="client.client"><img class="img-btn" src="../assets/btnSend.png" alt=""></button>
+            <button @click="sendMessage"><img :name="client.client" class="img-btn" src="../assets/btnSend.png" alt=""></button>
           </div>
         </div>
       </div>
@@ -84,9 +84,10 @@ export default {
     },
     async sendMessage(event) {
       try {
-        const btnClicked = await event.target;
-        const nameAttributeBtn = await btnClicked.getAttribute("name");
-        const body = { idClient: Number(nameAttributeBtn), message: this.message };
+        const imgClicked = await event.target;
+        const nameAttributeimg = await imgClicked.getAttribute("name");
+        console.log(nameAttributeimg);
+        const body = { idClient: Number(nameAttributeimg), message: this.message };
         await requestPost('/messages', body)
         this.message = '';
       } catch (error) {
