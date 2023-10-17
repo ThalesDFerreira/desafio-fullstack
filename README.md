@@ -67,5 +67,5 @@ A aplicação está no ar:
           email: teste@email.com
           senha: teste
 
-*** bot telegram -> t.me/dlashvolveBot ***
+*** bot telegram -> [t.me/dlashvolveBot](https://t.me/dlashvolveBot)https://t.me/dlashvolveBot ***
 
