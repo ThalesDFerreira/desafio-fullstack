@@ -2,6 +2,8 @@
   <div>
     <Header />
     <section class="container-box-chats">
+      <h1>Chats Telegram</h1>
+      <p>{{ this.paragraph }}</p>
       <div v-for="(client, index) in messages" :key="index" class="box-chats">
         <div class="nameClient">
           <h2>{{ client.client }}</h2>
@@ -38,15 +40,25 @@ export default {
       messages: [],
       message: '',
       idClient: 0,
+      paragraph: '',
     };
   },
   async created() {
     await this.fetchMessages();
 
+    this.verifyExistsChats();
+
     const pollingInterval = 5000;
     setInterval(this.fetchMessages, pollingInterval);
   },
   methods: {
+    verifyExistsChats() {
+      if (this.messages.length === 0) {
+        this.paragraph = 'Não há nenhum chat em aberto.';
+      } else {
+        this.paragraph = '';
+      }
+    },
     async fetchMessages() {
       try {
         const getMesseages = await requestGet('/messages');
@@ -103,9 +115,17 @@ export default {
 
 <style scoped>
 .container-box-chats {
+  margin-top: 10px;
   display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
   justify-content: center;
   width: 100%;
+}
+
+.container-box-chats p {
+  margin-top: 10px;
 }
 
 .box-chats {
