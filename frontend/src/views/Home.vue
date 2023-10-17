@@ -34,6 +34,7 @@
 import Header from '../components/Header.vue'
 import { requestGet, requestPost } from '../services/requests';
 
+
 export default {
   data() {
     return {
@@ -46,13 +47,15 @@ export default {
   async created() {
     await this.fetchMessages();
 
-    this.verifyExistsChats();
-
     const pollingInterval = 5000;
     setInterval(this.fetchMessages, pollingInterval);
   },
+  updated() {
+    this.verifyExistsChats();
+  },
   methods: {
     verifyExistsChats() {
+      console.log(this.messages.length === 0);
       if (this.messages.length === 0) {
         this.paragraph = 'Não há nenhum chat em aberto.';
       } else {
