@@ -36,9 +36,6 @@ const instanceTelegraf = async () => {
     const from = ctx.update.message.from;
     idClient = from.id;
 
-    console.log(idClient);
-    console.log(typeof idClient);
-
     await ctx.reply(`Muito bem-vindo, ${from.first_name}!`);
     saveLogMesseges(
       idClient,
