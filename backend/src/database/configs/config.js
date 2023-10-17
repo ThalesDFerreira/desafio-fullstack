@@ -1,55 +1,24 @@
 require('dotenv').config();
 
-module.exports = {
-  development: {
-    username: process.env.MYSQLUSER,
-    password: process.env.MYSQLPASSWORD,
-    database: process.env.MYSQLDATABASE,
-    port: Number(process.env.MYSQLPORT),
-    host: process.env.MYSQLHOST,
-    dialect: process.env.MYSQL_DIALECT,
-    logging: true,
-    define: {
-      timestamps: true,
-      underscored: true,
-    },
-    timezone: '-03:00',
-    dialectOptions: {
-      useUTC: false,
-    },
+const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
+
+const config = {
+  username: PGUSER,
+  password: PGPASSWORD,
+  database: PGDATABASE,
+  host: PGHOST,
+  port: 5432,
+  connection: {
+    options: `project=${ENDPOINT_ID}`,
   },
-  test: {
-    username: process.env.MYSQLUSER,
-    password: process.env.MYSQLPASSWORD,
-    database: process.env.MYSQLDATABASE,
-    port: Number(process.env.MYSQLPORT),
-    host: process.env.MYSQLHOST,
-    dialect: process.env.MYSQL_DIALECT,
-    logging: true,
-    define: {
-      timestamps: true,
-      underscored: true,
-    },
-    timezone: '-03:00',
-    dialectOptions: {
-      useUTC: false,
-    },
-  },
-  production: {
-    username: process.env.MYSQLUSER,
-    password: process.env.MYSQLPASSWORD,
-    database: process.env.MYSQLDATABASE,
-    port: Number(process.env.MYSQLPORT),
-    host: process.env.MYSQLHOST,
-    dialect: process.env.MYSQL_DIALECT,
-    logging: true,
-    define: {
-      timestamps: true,
-      underscored: true,
-    },
-    timezone: '-03:00',
-    dialectOptions: {
-      useUTC: false,
-    },
+  dialect: 'postgres',
+  dialectOptions: {
+    timezone: 'Z',
+    ssl: {
+      require: true, // Força o uso de SSL
+      rejectUnauthorized: false // Permite a conexão mesmo que o certificado SSL não seja verificado (não recomendado em produção)
+    }
   },
 };
+
+module.exports = config;
