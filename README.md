@@ -60,3 +60,10 @@ Para ter acesso ao frontend localmente você precisará acessar do navegador o e
           senha: teste
 
 
+***DEPLOY***
+
+A aplicação está no ar:
+*** https://desafio-fullstack-beta.vercel.app/***
+          email: teste@email.com
+          senha: teste
+
