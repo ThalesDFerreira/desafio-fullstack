@@ -60,10 +60,13 @@ Para ter acesso ao frontend localmente você precisará acessar do navegador o e
           senha: teste
 
 
-***DEPLOY***
+*** DEPLOY ***
 
 A aplicação está no ar:
-*** https://desafio-fullstack-beta.vercel.app/***
-          email: teste@email.com
-          senha: teste
+
+Para o frontend utilizei a plataforma: "VERCEL.COM" Para o backend utilizei a plataforma: "RENDER.COM" Para o banco de dados postgres utilizei a plataforma: "NEONTECH"
+
+*** https://desafio-fullstack-beta.vercel.app/*** email: teste@email.com senha: teste
+
+*** bot telegram -> [t.me/dlashvolveBot](https://t.me/dlashvolveBot)https://t.me/dlashvolveBot ***
 
