@@ -3,6 +3,6 @@ import App from './App.vue';
 import router from './router';
 import hljs from 'highlight.js';
 
-hljs.initHighlightingOnLoad();
+hljs.highlightAll();
 
 createApp(App).use(router).mount('#app');
