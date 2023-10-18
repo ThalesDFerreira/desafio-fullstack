@@ -6,7 +6,7 @@ let pathHome = '';
 let nameHome = '';
 let componentHome = '';
 
-const verifyUserAutenticate = () => {
+export const verifyUserAutenticate = () => {
   const token = localStorage.getItem('token');
 
   if (token) {
@@ -15,8 +15,6 @@ const verifyUserAutenticate = () => {
     componentHome = HomeView;
   }
 };
-
-verifyUserAutenticate();
 
 const routes = [
   {
