@@ -2,20 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import LoginView from '../views/Login.vue';
 import HomeView from '../views/Home.vue';
 
-let pathHome = '';
-let nameHome = '';
-let componentHome = '';
-
-export const verifyUserAutenticate = () => {
-  const token = localStorage.getItem('token');
-
-  if (token) {
-    pathHome = '/home';
-    nameHome = 'Home';
-    componentHome = HomeView;
-  }
-};
-
 const routes = [
   {
     path: '/',
@@ -23,15 +9,31 @@ const routes = [
     component: LoginView,
   },
   {
-    path: pathHome,
-    name: nameHome,
-    component: componentHome,
+    path: '/home',
+    name: 'Home',
+    component: HomeView,
+    meta: { requiresAuth: true }, // Adicione uma meta informando que a rota requer autenticação
   },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token');
+
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (!token) {
+      // Se a rota requer autenticação e não há token, redirecione para a página de login
+      next({ name: 'Login' });
+    } else {
+      next(); // O usuário está autenticado, prossiga para a rota
+    }
+  } else {
+    next(); // A rota não requer autenticação
+  }
 });
 
 export default router;

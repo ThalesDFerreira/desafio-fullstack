@@ -16,7 +16,6 @@
 
 <script>
 import { requestPost } from '../services/requests';
-import verifyUserAutenticate from '../router'
 
 export default {
   data() {
@@ -26,9 +25,6 @@ export default {
       showPassword: false,
       passwordFieldType: 'password',
     };
-  },
-  async updated() {
-    await verifyUserAutenticate();
   },
   methods: {
     togglePasswordVisibility() {
