@@ -53,7 +53,7 @@ Após isso, basta inicializar o "/start" no bot do telegram;
 
 Para ter acesso ao frontend localmente você precisará acessar do navegador o endpoit abaixo:
 
-* [http://localhost:3000/](http://127.0.0.1:5173/)
+* [http://localhost:5173/](http://127.0.0.1:5173/)
 
 * para testar basta inserir o 
           email: teste@email.com
